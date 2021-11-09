@@ -1,0 +1,25 @@
+import random
+
+
+def create_file_with_numbers(new_file):
+    with open(f"{new_file}.txt", 'w') as file:
+        res_string = []
+        for _ in (range(100)):
+            rand_numbers = random.sample(range(100), 10)
+            rnd_string = " ".join(map(str, rand_numbers)) + '\n'
+            res_string.append(rnd_string)
+        file.writelines(res_string)
+
+
+create_file_with_numbers("my_file")
+
+
+def pow_func(new_file):
+    with open(f"{new_file}.txt", 'r+') as file:
+        test_list = file.readlines()
+        for line in test_list:
+            res = [int(value) ** 2 for value in line.split()]
+            file.write(" ".join(map(str, res)) + '\n')
+
+
+pow_func("my_file")
